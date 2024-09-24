@@ -1,7 +1,10 @@
+import Link from "next/link";
+import React from "react";
+
 async function fetchListOfUsers() {
   try {
     const response = await fetch("https://dummyjson.com/users?limit=10", {
-      cache: "no-store",
+      cache: "default",
     });
 
     const data = await response.json();
@@ -12,21 +15,24 @@ async function fetchListOfUsers() {
   }
 }
 
-import React from "react";
-
 export default async function ServerSideDataFetch() {
   const listOfUsers = await fetchListOfUsers();
 
   return (
-    <div>
+    <div className="p-10">
       <h1 className="font-bold text-3xl underline ml-4">
-        Server side data fetching
+        Server side data fetching: user list
       </h1>
       <ul>
         {listOfUsers && listOfUsers.length > 0
           ? listOfUsers.map((user) => (
-              <li key={user.id}>
-                <h2>{user.firstName}</h2>
+              <li
+                key={user.id}
+                className="mt-4 cursor-pointer hover:bg-gray-100"
+              >
+                <Link href={`/server-data-fetch/${user.id}`}>
+                  {user.firstName}
+                </Link>
               </li>
             ))
           : null}

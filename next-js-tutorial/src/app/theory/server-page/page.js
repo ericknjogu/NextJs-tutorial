@@ -6,7 +6,7 @@ async function fetchListOfProducts() {
 
     const results = await response.json();
 
-    return results;
+    return results?.products;
   } catch (error) {
     throw new Error(error);
   }
@@ -14,6 +14,10 @@ async function fetchListOfProducts() {
 
 fetchListOfProducts();
 
-export default function ServerActionsExample() {
+export default async function ServerActionsExample() {
+  const products = await fetchListOfProducts();
+
+  console.log(products);
+
   return <div> ServerActionsExample --server components</div>;
 }

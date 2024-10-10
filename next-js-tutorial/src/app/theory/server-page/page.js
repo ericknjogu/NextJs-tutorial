@@ -19,5 +19,5 @@ export default async function ServerActionsExample() {
 
   console.log(products);
 
-  return <div> ServerActionsExample --server components</div>;
+  return <div> Server Actions Example --server components</div>;
 }

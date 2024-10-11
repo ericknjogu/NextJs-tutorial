@@ -1,18 +1,6 @@
 import React from "react";
 
-async function fetchListOfProducts() {
-  try {
-    const response = await fetch("https://dummyjson.com/products");
-
-    const results = await response.json();
-
-    return results?.products;
-  } catch (error) {
-    throw new Error(error);
-  }
-}
-
-fetchListOfProducts();
+import { fetchListOfProducts } from "@/app/actions";
 
 export default async function ServerActionsExample() {
   const products = await fetchListOfProducts();

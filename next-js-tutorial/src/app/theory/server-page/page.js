@@ -7,5 +7,17 @@ export default async function ServerActionsExample() {
 
   console.log(products);
 
-  return <div> Server Actions Example --server components</div>;
+  return (
+    <div>
+      {" "}
+      Server Actions Example --server components
+      <ul>
+        {products && products.length > 0 ? (
+          products.map((product) => <li>{product.title}</li>)
+        ) : (
+          <h2>No products found</h2>
+        )}
+      </ul>
+    </div>
+  );
 }

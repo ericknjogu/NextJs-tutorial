@@ -2,12 +2,12 @@ export const addNewUserForm = [
   {
     name: "firstName",
     label: "First Name",
-    placeholder: "Enter First Name",
+    placeholder: "Enter first name",
   },
   {
     name: "lastName",
     label: "Last Name",
-    placeholder: "Enter last Name",
+    placeholder: "Enter last name",
   },
   {
     name: "email",

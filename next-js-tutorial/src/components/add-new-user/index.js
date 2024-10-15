@@ -5,11 +5,9 @@ import { Button } from "../ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogFooter,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 
 import { Input } from "@/components/ui/input";
@@ -27,7 +25,7 @@ function AddNewUser() {
       >
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Add New User</DialogTitle>
+            <DialogTitle>Add A New User</DialogTitle>
           </DialogHeader>
           <div className="grid gap-4 py-4">
             {addNewUserForm.map((item, index) => (

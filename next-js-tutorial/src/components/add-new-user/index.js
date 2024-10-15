@@ -1,6 +1,6 @@
 "use client";
 
-import { addNewUserForm } from "@/app/utils";
+import { addNewUserForm, addNewUserFormInitialState } from "@/app/utils";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -16,12 +16,27 @@ import { useState } from "react";
 
 function AddNewUser() {
   const [openPopup, setOpenPopup] = useState(false);
+  const [addNewUserFormData, setAddNewUserFormData] = useState(
+    addNewUserFormInitialState
+  );
+
+  function handleSaveButtonValid() {
+    return Object.keys(addNewUserFormData).every(
+      (key) => addNewUserFormData[key].trim() !== ""
+    );
+  }
+
+  console.log(addNewUserFormData);
+
   return (
     <div>
       <Button onClick={() => setOpenPopup(true)}>Add User</Button>
       <Dialog
         open={openPopup}
-        onOpenChange={setOpenPopup}
+        onOpenChange={() => {
+          setOpenPopup(false);
+          setAddNewUserFormData(addNewUserFormInitialState);
+        }}
       >
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
@@ -42,15 +57,30 @@ function AddNewUser() {
                   </Label>
                   <Input
                     id={item.name}
+                    name={item.name}
                     className="col-span-3"
                     placeHolder={item.placeholder}
+                    type={item.type}
+                    value={addNewUserFormData[item.name]}
+                    onChange={(e) =>
+                      setAddNewUserFormData({
+                        ...addNewUserFormData,
+                        [item.name]: e.target.value,
+                      })
+                    }
                   />
                 </div>
               </div>
             ))}
           </div>
           <DialogFooter>
-            <Button type="submit">Save changes</Button>
+            <Button
+              className="disabled:opacity-45"
+              disabled={!handleSaveButtonValid()}
+              type="submit"
+            >
+              Save changes
+            </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

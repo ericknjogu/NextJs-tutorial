@@ -1,5 +1,6 @@
 "use client";
 
+import { addNewUserForm } from "@/app/utils";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -26,38 +27,29 @@ function AddNewUser() {
       >
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
-            <DialogDescription>
-              Make changes to your profile here. Click save when you're done.
-            </DialogDescription>
+            <DialogTitle>Add New User</DialogTitle>
           </DialogHeader>
           <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label
-                htmlFor="name"
-                className="text-right"
+            {addNewUserForm.map((item, index) => (
+              <div
+                className="mb-5"
+                key={index}
               >
-                Name
-              </Label>
-              <Input
-                id="name"
-                defaultValue="Pedro Duarte"
-                className="col-span-3"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label
-                htmlFor="username"
-                className="text-right"
-              >
-                Username
-              </Label>
-              <Input
-                id="username"
-                defaultValue="@peduarte"
-                className="col-span-3"
-              />
-            </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label
+                    htmlFor={item.name}
+                    className="text-right"
+                  >
+                    {item.label}
+                  </Label>
+                  <Input
+                    id={item.name}
+                    className="col-span-3"
+                    placeHolder={item.placeholder}
+                  />
+                </div>
+              </div>
+            ))}
           </div>
           <DialogFooter>
             <Button type="submit">Save changes</Button>

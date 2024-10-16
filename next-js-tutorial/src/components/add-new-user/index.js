@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { addNewUser } from "@/app/actions";
+import { useRouter } from "next/router";
 
 function AddNewUser() {
   const [openPopup, setOpenPopup] = useState(false);
@@ -28,9 +29,13 @@ function AddNewUser() {
   }
 
   async function handleAddNewUser() {
-    const result = await addNewUser(addNewUserFormData);
+    const result = await addNewUser(addNewUserFormData, "/user-management");
 
     console.log(result);
+
+    setOpenPopup(false);
+
+    setAddNewUserFormData(addNewUserFormInitialState);
   }
 
   return (

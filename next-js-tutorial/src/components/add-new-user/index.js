@@ -13,6 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import { addNewUser } from "@/app/actions";
 
 function AddNewUser() {
   const [openPopup, setOpenPopup] = useState(false);
@@ -26,7 +27,11 @@ function AddNewUser() {
     );
   }
 
-  console.log(addNewUserFormData);
+  async function handleAddNewUser() {
+    const result = await addNewUser(addNewUserFormData);
+
+    console.log(result);
+  }
 
   return (
     <div>
@@ -42,7 +47,10 @@ function AddNewUser() {
           <DialogHeader>
             <DialogTitle>Add A New User</DialogTitle>
           </DialogHeader>
-          <div className="grid gap-4 py-4">
+          <form
+            action={handleAddNewUser}
+            className="grid gap-4 py-4"
+          >
             {addNewUserForm.map((item, index) => (
               <div
                 className="mb-5"
@@ -72,16 +80,16 @@ function AddNewUser() {
                 </div>
               </div>
             ))}
-          </div>
-          <DialogFooter>
-            <Button
-              className="disabled:opacity-45"
-              disabled={!handleSaveButtonValid()}
-              type="submit"
-            >
-              Save changes
-            </Button>
-          </DialogFooter>
+            <DialogFooter>
+              <Button
+                className="disabled:opacity-45"
+                disabled={!handleSaveButtonValid()}
+                type="submit"
+              >
+                Save changes
+              </Button>
+            </DialogFooter>
+          </form>
         </DialogContent>
       </Dialog>
     </div>

@@ -10,16 +10,16 @@ async function UserManagement() {
   return (
     <div className="p-20 max-w-6xl">
       <div className="flex justify-between">
-        <h1>User Management</h1>
+        <h1 className="text-3xl font-bold">User Management</h1>
         <AddNewUser />
       </div>
-      <div className="mt-6">
+      <div className="mt-6 grid grid-cols-3 gap-4">
         {getListOfUsers &&
         getListOfUsers.data &&
         getListOfUsers.data.length > 0 ? (
           getListOfUsers.data.map((userItem) => (
             <SingleUserCard
-              key={userItem.id}
+              key={userItem._id}
               user={userItem}
             />
           ))

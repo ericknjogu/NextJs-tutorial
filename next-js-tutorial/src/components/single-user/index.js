@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "../ui/button";
+import { deleteUserAction } from "@/app/actions";
 
 export default function SingleUserCard({ user }) {
   return (
@@ -23,7 +24,7 @@ export default function SingleUserCard({ user }) {
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button>Edit</Button>
-        <Button>Delete</Button>
+        <Button onClick={() => deleteUserAction(user?._id)}>Delete</Button>
       </CardFooter>
     </Card>
   );

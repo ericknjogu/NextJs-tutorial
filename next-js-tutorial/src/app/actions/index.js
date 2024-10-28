@@ -78,3 +78,20 @@ export async function getUsersAction() {
 //edit user action
 
 //delete user action
+
+export async function deleteUserAction(currentUserId) {
+  await connectToDB();
+
+  try {
+    const deletedUser = await User.findByIdAndDelete(currentUserId);
+
+    console.log(deletedUser);
+  } catch (error) {
+    console.log(error);
+
+    return {
+      success: false,
+      message: "Error deleting user, Please try again !",
+    };
+  }
+}

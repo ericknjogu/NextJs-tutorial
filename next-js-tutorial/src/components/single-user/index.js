@@ -3,9 +3,11 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Button } from "../ui/button";
 
 export default function SingleUserCard({ user }) {
   return (
@@ -19,6 +21,10 @@ export default function SingleUserCard({ user }) {
       <CardContent>
         <p>{user?.address}</p>
       </CardContent>
+      <CardFooter className="flex justify-between">
+        <Button>Edit</Button>
+        <Button>Delete</Button>
+      </CardFooter>
     </Card>
   );
 }

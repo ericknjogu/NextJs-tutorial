@@ -5,8 +5,6 @@ import SingleUserCard from "@/components/single-user";
 async function UserManagement() {
   const getListOfUsers = await getUsersAction();
 
-  console.log(getListOfUsers);
-
   return (
     <div className="p-20 max-w-6xl">
       <div className="flex justify-between">

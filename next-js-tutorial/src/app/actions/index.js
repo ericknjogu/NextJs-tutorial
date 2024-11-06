@@ -94,13 +94,24 @@ export async function editUserAction() {
 
 //delete user action
 
-export async function deleteUserAction(currentUserId) {
+export async function deleteUserAction(currentUserId, pathToRefresh) {
   await connectToDB();
 
   try {
     const deletedUser = await User.findByIdAndDelete(currentUserId);
 
-    console.log(deletedUser);
+    if (deletedUser) {
+      revalidatePath(pathToRefresh);
+      return {
+        success: true,
+        message: "User deleted successfully",
+      };
+    } else {
+      return {
+        success: false,
+        message: "Error deleting user, Please try again !",
+      };
+    }
   } catch (error) {
     console.log(error);
 

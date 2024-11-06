@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import "./globals.css";
-import loading from "./loading";
+import Loading from "./loading";
 
 export const metadata = {
   title: "Next Js Tutorial",
@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Suspense fallback={<loading />}>{children}</Suspense>
+        <Suspense fallback={<Loading />}>{children}</Suspense>
       </body>
     </html>
   );

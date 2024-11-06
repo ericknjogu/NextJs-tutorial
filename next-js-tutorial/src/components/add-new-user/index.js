@@ -72,7 +72,7 @@ function AddNewUser() {
                     id={item.name}
                     name={item.name}
                     className="col-span-3"
-                    placeHolder={item.placeholder}
+                    placeholder={item.placeholder}
                     type={item.type}
                     value={addNewUserFormData[item.name]}
                     onChange={(e) =>

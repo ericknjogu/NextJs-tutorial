@@ -24,7 +24,9 @@ export default function SingleUserCard({ user }) {
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button>Edit</Button>
-        <Button onClick={() => deleteUserAction(user?._id)}>Delete</Button>
+        <Button onClick={() => deleteUserAction(user?._id, "/user-management")}>
+          Delete
+        </Button>
       </CardFooter>
     </Card>
   );
